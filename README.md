@@ -15,9 +15,8 @@ Includes directory brute-force scanning, custom wordlist support, JSON/PDF expor
 
 ---
 
-## 📸 Screenshots
 
-*(Insert screenshots here if you have any)*
+
 
 ---
 
