@@ -5,3 +5,18 @@ Select or upload your wordlist
 Click Scan
 
 View and export the results
+
+---
+
+### 📝 How to Add This to Your Project
+
+1. In VS Code, **right-click** your project folder
+2. Click **New File** → name it: `README.md`
+3. Paste the content above inside the file
+4. Save the file
+5. Then in terminal:
+
+```bash
+git add README.md
+git commit -m "Add README file"
+git push
