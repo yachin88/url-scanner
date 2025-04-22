@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🔍 URL Scanner</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      background: #1f1f1f;
+      border: 1px solid #333;
+      color: white;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    .result p {
+      background: #1e1e1e;
+      padding: 5px;
+      border-left: 4px solid #00ff90;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 URL Scanner & Directory Bruteforce</h1>
+  <form id="scanForm">
+    <input type="text" name="url" placeholder="Enter target URL" required><br>
+    <input type="file" name="wordlist" accept=".txt" required><br>
+    <button type="submit">Scan</button>
+  </form>
+
+  <div class="result" id="results"></div>
+
+  <script>
+    const form = document.getElementById('scanForm');
+    const resultDiv = document.getElementById('results');
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      resultDiv.innerHTML = '<p>⏳ Scanning...</p>';
+
+      const response = await fetch('/scan', {
+        method: 'POST',
+        body: formData
+      });
+
+      const results = await response.json();
+      resultDiv.innerHTML = '';
+      results.forEach(res => {
+        resultDiv.innerHTML += `<p>${res.url} → <strong>${res.status}</strong></p>`;
+      });
+    };
+  </script>
+</body>
+</html>
